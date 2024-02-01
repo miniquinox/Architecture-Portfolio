@@ -3,61 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My PDF Flipbook</title>
-    <!-- Link Swiper's CSS -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/swiper/swiper-bundle.min.css"
-    />
+    <title>Carmen Carretero's Portfolio</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <style>
-        /* Add your styles here */
-        .swiper-container {
-            width: 600px;
-            height: 400px;
-            margin: auto;
-        }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; text-align: center; }
+        .contact-info, .experience, .education, .achievements, .volunteering, .skills, .hobbies { text-align: left; margin: 20px auto; max-width: 800px; }
+        .swiper-container { width: 800px; height: 450px; margin: 20px auto; }
+        .swiper-slide img { width: 100%; height: auto; }
+        h2 { color: #333; }
     </style>
 </head>
 <body>
 
+<h1>Carmen Carretero's Curriculum Vitae</h1>
+<p>Driven and innovative Junior Designer with experience in architecture internships across San Francisco and Albuquerque. A Master's graduate from UC Berkeley with a diverse background in design, architecture, and community projects. Fluent in Spanish and English, I bring a global perspective and a passion for sustainable and resilient architecture.</p>
+
 <!-- Swiper -->
 <div class="swiper-container">
     <div class="swiper-wrapper">
-        <!-- Your images -->
-        <div class="swiper-slide"><img src="page1.png" alt="Page 1"></div>
-        <div class="swiper-slide"><img src="page2.png" alt="Page 2"></div>
-        <div class="swiper-slide"><img src="page3.png" alt="Page 3"></div>
-        <div class="swiper-slide"><img src="page4.png" alt="Page 4"></div>
-        <div class="swiper-slide"><img src="page5.png" alt="Page 4"></div>
-        <!-- Add more slides as needed -->
+        <!-- Slides will be added dynamically -->
     </div>
-    <!-- Add Pagination -->
+    <!-- Optional navigation -->
     <div class="swiper-pagination"></div>
-    <!-- Add Navigation -->
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
 </div>
 
-<!-- Include Swiper's JS -->
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
-  var swiper = new Swiper('.swiper-container', {
-    // Optional parameters
-    direction: 'horizontal',
-    loop: false,
+    var swiper = new Swiper('.swiper-container', {
+        loop: true,
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    });
 
-    // If you want to enable navigation arrows
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
+    // Dynamically load portfolio images
+    var totalPages = 31; // Set the total number of portfolio pages
+    var swiperWrapper = document.querySelector('.swiper-wrapper');
 
-    // And if you want pagination
-    pagination: {
-      el: '.swiper-pagination',
-    },
-  });
+    for(var i = 1; i <= totalPages; i++) {
+        var pageNumber = i.toString().padStart(4, '0'); // Formats the page number
+        var imagePath = `PORTFOLIO_page-${pageNumber}.jpg`; // Constructs the image path
+        var slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+        slide.innerHTML = `<img src="${imagePath}" alt="Portfolio Page ${i}">`;
+        swiperWrapper.appendChild(slide);
+    }
+
+    // Refresh Swiper after adding slides
+    swiper.update();
 </script>
+
+<div class="contact-info">
+    <h2>Contact Information</h2>
+    <p>📞 +1 505 930 4209<br>📧 carmencarreterom@hotmail.com<br>🔗 <a href="https://linkedin.com/in/carmencarreterom">linkedin.com/in/carmencarreterom</a></p>
+</div>
+
+<div class="experience">
+    <h2>Work Experience</h2>
+    <p><strong>SOM, San Francisco, California</strong><br>Junior Designer (May - Current)<br>Architecture Intern (Jun - May '22)</p>
+    <p><strong>San Francisco Public Works, Bureau of Architecture</strong><br>Architecture Internship (Aug '21 - Aug '22)</p>
+    <p><strong>SmithGroup, San Francisco, California</strong><br>Summer Architecture Internship (Jun '21 - Aug '21)</p>
+    <p><strong>Albuquerque Public Schools, New Mexico</strong><br>Facilities Design + Construction Internship (Jun '18 - Dec '19)</p>
+</div>
+
+<div class="education">
+    <h2>Education</h2>
+    <p><strong>UC Berkeley</strong><br>Master’s in Architecture (GPA 3.8, 2020 - 2023)</p>
+    <p><strong>University of New Mexico</strong><br>School of Architecture and Planning (GPA 3.8, 2016 - 2020)<br>Undergraduate Degree</p>
+    <p><strong>Immersive Study Abroad Program</strong><br>Oslo, Norway (2018)</p>
+</div>
+
+<div class="achievements">
+    <h2>Achievements</h2>
+    <p>Student Panelist - Space Architecture, ICES, Lisbon (Jul '21)<br>T.Y. Lin Prize in Architecture + Engineering, UC Berkeley (Nov '20)</p>
+</div>
+
+<div class="volunteering">
+    <h2>Volunteering & Organizations</h2>
+    <p>Department of Architecture Delegate, UC Berkeley Graduate Assembly (Spring '22)<br>Habitat for Humanity, Bay Area (Spring '22)</p>
+</div>
+
+<div class="skills">
+    <h2>Skills</h2>
+    <p>Adobe CC, Microsoft Office, Bluebeam, AutoCAD, Enscape, Rhino, V-Ray, Grasshopper, Revit</p>
+</div>
+
+<div class="hobbies">
+    <h2>Hobbies</h2>
+    <p>Sports, Travel, Cooking, Poetry, Painting</p>
+</div>
 
 </body>
 </html>
