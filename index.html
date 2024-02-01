@@ -4,43 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My PDF Flipbook</title>
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-        }
-        .flipbook-image {
-            max-width: 100%;
-            height: auto;
-            margin: 20px 0;
-        }
-        .container {
+        /* Add your styles here */
+        .swiper-container {
+            width: 600px;
+            height: 400px;
             margin: auto;
-            width: 60%;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Welcome to My Flipbook Project</h1>
-    <p>Welcome to my project! This flipbook is a digital representation of a PDF document, designed to provide a user-friendly and interactive way to browse through its pages. Whether you're here for educational purposes, entertainment, or to explore my work, I'm glad to have you.</p>
-
-    <!-- Flipbook Images -->
-    <div id="flipbook">
-        <!-- Replace these with your actual image files -->
-        <img src="page1.png" alt="Page 1" class="flipbook-image">
-        <img src="page2.png" alt="Page 2" class="flipbook-image">
-        <img src="page3.png" alt="Page 3" class="flipbook-image">
-        <img src="page4.png" alt="Page 4" class="flipbook-image">
-        <img src="page5.png" alt="Page 5" class="flipbook-image">
-        <!-- Add more images as needed -->
+<!-- Swiper -->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <!-- Your images -->
+        <div class="swiper-slide"><img src="page1.jpg" alt="Page 1"></div>
+        <div class="swiper-slide"><img src="page2.jpg" alt="Page 2"></div>
+        <div class="swiper-slide"><img src="page3.jpg" alt="Page 3"></div>
+        <div class="swiper-slide"><img src="page4.jpg" alt="Page 4"></div>
+        <!-- Add more slides as needed -->
     </div>
-
-    <p>Thank you for visiting my flipbook project. I hope you find the content engaging and easy to navigate. This project is a testament to the simplicity and power of digital sharing, aiming to make information more accessible and enjoyable for everyone. If you have any feedback or suggestions, please feel free to reach out or contribute to the project. Your input is greatly appreciated as we continue to improve and expand our digital offerings.</p>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Navigation -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
 </div>
+
+<!-- Include Swiper's JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper('.swiper-container', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: false,
+
+    // If you want to enable navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // And if you want pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  });
+</script>
 
 </body>
 </html>
